@@ -1,6 +1,7 @@
 package id.co.imastudio.recyclerview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,7 +54,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ViewHolder> {
         holder.judulFilm.setText(filmList.get(position).getJudulFilm());
 //        holder.gambarFilm.setImageResource(filmList.get(position).getGambarFilm());
         Glide.with(context)
-                .load(filmList.get(position).getGambarFilm())
+                .load("https://image.tmdb.org/t/p/w500"+filmList.get(position).getGambarFilm())
                 .error(R.mipmap.ic_launcher)
                 .into(holder.gambarFilm);
 
@@ -61,6 +62,9 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "Judul Film : "+ filmList.get(position).getJudulFilm(), Toast.LENGTH_SHORT).show();
+                Intent pindah = new Intent (context, ScrollingActivity.class);
+                pindah.putExtra("DATA_JUDUL", filmList.get(position).getJudulFilm());
+                context.startActivity(pindah);
             }
         });
 
