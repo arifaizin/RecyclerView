@@ -24,5 +24,8 @@ public class ScrollingActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        String datJudul = getIntent().getStringExtra("DATA_JUDUL");
+
     }
 }
